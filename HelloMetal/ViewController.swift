@@ -7,12 +7,38 @@
 //
 
 import UIKit
+import Metal
+import QuartzCore
 
 class ViewController: UIViewController {
 
+    
+    var device : MTLDevice! = nil
+    var metalLayer : CAMetalLayer! = nil
+    var vertexBuffer : MTLBuffer! = nil
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        device = MTLCreateSystemDefaultDevice()
+        
+        metalLayer = CAMetalLayer()
+        metalLayer.device = device
+        metalLayer.pixelFormat = .BGRA8Unorm
+        metalLayer.framebufferOnly = true
+        metalLayer.frame = view.layer.frame
+        view.layer.addSublayer(metalLayer)
+        
+        let vertexData : [Float] = [0.0,1.0,0.0,-1.0,-1.0,0.0,1.0,-1.0,0.0]
+        
+        let dataSize = vertexData.count * sizeofValue(vertexData[0])
+        
+        vertexBuffer = device.newBufferWithBytes(vertexData, length: dataSize, options: nil)
+        
+        
+        
+    
     }
 
     override func didReceiveMemoryWarning() {

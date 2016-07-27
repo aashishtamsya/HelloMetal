@@ -14,6 +14,7 @@
 		E1060CF11D488D2B00A27277 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1060CEF1D488D2B00A27277 /* LaunchScreen.storyboard */; };
 		E1060CFC1D488D2B00A27277 /* HelloMetalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1060CFB1D488D2B00A27277 /* HelloMetalTests.swift */; };
 		E1060D071D488D2B00A27277 /* HelloMetalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1060D061D488D2B00A27277 /* HelloMetalUITests.swift */; };
+		E1060D151D48943800A27277 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = E1060D141D48943800A27277 /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		E1060D021D488D2B00A27277 /* HelloMetalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloMetalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1060D061D488D2B00A27277 /* HelloMetalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloMetalUITests.swift; sourceTree = "<group>"; };
 		E1060D081D488D2B00A27277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1060D141D48943800A27277 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				E1060CE61D488D2B00A27277 /* AppDelegate.swift */,
 				E1060CE81D488D2B00A27277 /* ViewController.swift */,
+				E1060D141D48943800A27277 /* Shaders.metal */,
 				E1060CEA1D488D2B00A27277 /* Main.storyboard */,
 				E1060CED1D488D2B00A27277 /* Assets.xcassets */,
 				E1060CEF1D488D2B00A27277 /* LaunchScreen.storyboard */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1060D151D48943800A27277 /* Shaders.metal in Sources */,
 				E1060CE91D488D2B00A27277 /* ViewController.swift in Sources */,
 				E1060CE71D488D2B00A27277 /* AppDelegate.swift in Sources */,
 			);
@@ -484,6 +488,7 @@
 				E1060D0D1D488D2B00A27277 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1060D0E1D488D2B00A27277 /* Build configuration list for PBXNativeTarget "HelloMetalTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +497,7 @@
 				E1060D101D488D2B00A27277 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1060D111D488D2B00A27277 /* Build configuration list for PBXNativeTarget "HelloMetalUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +506,7 @@
 				E1060D131D488D2B00A27277 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
