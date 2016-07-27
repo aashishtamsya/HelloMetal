@@ -34,7 +34,26 @@ class ViewController: UIViewController {
         
         let dataSize = vertexData.count * sizeofValue(vertexData[0])
         
-        vertexBuffer = device.newBufferWithBytes(vertexData, length: dataSize, options: nil)
+        vertexBuffer = device.newBufferWithBytes(vertexData, length: dataSize, options: .CPUCacheModeDefaultCache)
+        
+        let defaultLibrary = device.newDefaultLibrary()
+        let fragmentFunction = defaultLibrary?.newFunctionWithName("basic_fragment")
+        let vertexFunction = defaultLibrary?.newFunctionWithName("basic_vertex")
+        
+        let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
+        pipelineStateDescriptor.vertexFunction = vertexFunction
+        pipelineStateDescriptor.fragmentFunction = fragmentFunction
+        
+        pipelineStateDescriptor.colorAttachments[0].pixelFormat = .BGRA8Unorm
+        
+        do {
+            pipelineState = try device.newRenderPipelineStateWithDescriptor(pipelineStateDescriptor)
+        }
+        catch {
+            print("Failed to create pipeline state")
+        }
+        
+        
         
         
         
