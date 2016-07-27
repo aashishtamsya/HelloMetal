@@ -3,6 +3,7 @@
 [![Platform](https://img.shields.io/badge/platform-ios-lightgrey.svg)]()
 [![Programming Language](https://img.shields.io/badge/language-swift-orange.svg)]()
 [![Scrutinizer Build](https://img.shields.io/scrutinizer/build/g/filp/whoops.svg?maxAge=2592000)]()
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](LICENSE.md)
 
 A Project written in Swift to get hands-on experience using Metal to create a bare-bones app: drawing a simple triangle. In the process, I learn about some of the most important classes in Metal, such as devices, command queues, and more.
 
