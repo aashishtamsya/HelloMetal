@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var device : MTLDevice! = nil
     var metalLayer : CAMetalLayer! = nil
     var vertexBuffer : MTLBuffer! = nil
-    
+    var pipelineState : MTLRenderPipelineState! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
