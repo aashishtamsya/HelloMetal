@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var metalLayer : CAMetalLayer! = nil
     var vertexBuffer : MTLBuffer! = nil
     var pipelineState : MTLRenderPipelineState! = nil
+    var commanQueue : MTLCommandQueue! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,7 @@ class ViewController: UIViewController {
             print("Failed to create pipeline state")
         }
         
+        commanQueue = device.newCommandQueue()
         
         
         
