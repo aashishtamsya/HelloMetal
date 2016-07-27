@@ -19,6 +19,12 @@ class ViewController: UIViewController {
     var pipelineState : MTLRenderPipelineState! = nil
     var commanQueue : MTLCommandQueue! = nil
     
+    //Rendering the triangle
+    var timer : CADisplayLink! = nil
+    var drawable: CAMetalDrawable {
+        return (metalLayer as! CAMetalLayer).nextDrawable()!
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,6 +63,10 @@ class ViewController: UIViewController {
         commanQueue = device.newCommandQueue()
         
         
+            
+        
+        timer = CADisplayLink.init(target: self, selector: #selector(ViewController.gameloop))
+        timer.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
         
         
     
@@ -66,7 +76,40 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func render() {
+        
+        let renderPassDescriptor = MTLRenderPassDescriptor()
+        renderPassDescriptor.colorAttachments[0].texture = drawable.texture
+        renderPassDescriptor.colorAttachments[0].loadAction = .Clear
+        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor.init(red: 75.0/255/0, green: 226.0/255.0, blue: 160.0/255.0, alpha: 1.0)
+        
+        let commandBuffer = commanQueue.commandBuffer()
+        
+        let renderEncodedOptional = commandBuffer.renderCommandEncoderWithDescriptor(renderPassDescriptor)
+        
+        if let renderEncoder : MTLRenderCommandEncoder = renderEncodedOptional {
+            
+            renderEncoder.setRenderPipelineState(pipelineState)
+            renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, atIndex: 0)
+            renderEncoder.drawPrimitives(.Triangle, vertexStart: 0, vertexCount: 3, instanceCount: 1)
+            renderEncoder.endEncoding()
+        }
+        
+        
+        
+        commandBuffer.presentDrawable(drawable)
+        commandBuffer.commit()
+        
+    }
 
+    func gameloop() {
+        autoreleasepool {
+            self.render()
+        }
+    }
+    
+    
 
 }
 
