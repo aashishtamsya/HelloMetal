@@ -61,15 +61,8 @@ class ViewController: UIViewController {
         }
         
         commanQueue = device.newCommandQueue()
-        
-        
-            
-        
-        timer = CADisplayLink.init(target: self, selector: #selector(ViewController.gameloop))
+        timer = UIScreen.mainScreen().displayLinkWithTarget(self, selector: #selector(ViewController.gameloop))
         timer.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
-        
-        
-    
     }
 
     override func didReceiveMemoryWarning() {
