@@ -96,9 +96,8 @@ class ViewController: UIViewController {
             renderEncoder.endEncoding()
         }
         
-        
-        
-        commandBuffer.presentDrawable(drawable)
+        let fps : CFTimeInterval = 30.0
+        commandBuffer.presentDrawable(drawable, atTime: fps)
         commandBuffer.commit()
         
     }
